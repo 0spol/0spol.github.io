@@ -14,10 +14,10 @@ social:
     url: "https://github.com/0spol"
   - name: "LinkedIn"
     url: "https://www.linkedin.com/in/gonzalo-a-b2707823b"
-
+   
 projects:
   - title: "Aplicación Web CRM"
-    description: "Aplicación web CRM para gestionar clientes, ventas y comunicaciones en una plataforma escalable y eficiente."
+    description: "Aplicación web para gestionar clientes, ventas y comunicaciones en una plataforma escalable."
     technologies: "React, Tailwind, Spring Boot, MySQL, Docker"
     link: "https://github.com/0spol/Shuemo"
 
