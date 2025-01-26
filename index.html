@@ -6,98 +6,159 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>📋 Portfolio de Gonzalo Aparicio 📋</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <style>
+        .fade-in {
+            animation: fadeIn 2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
 </head>
 
-<body class="bg-gray-100">
+<body class="bg-gray-900 font-sans text-white">
 
-    <div class="container mx-auto px-4 py-10">
-        <header class="text-center mb-10">
+    <div class="container mx-auto px-6 py-10">
+
+        <!-- Información Personal -->
+        <header class="text-center mb-12 fade-in">
             <img src="/docs/assets/Photo_Profile.jpg" alt="Foto de Gonzalo Aparicio Muñoz"
-                class="w-40 h-40 rounded-full mx-auto mb-4">
-            <h1 class="text-4xl font-bold text-gray-800">Gonzalo Aparicio Muñoz</h1>
-            <p class="text-xl text-gray-600">Desarrollador de aplicaciones web y multiplataforma</p>
+                class="w-40 h-40 rounded-full mx-auto mb-4 border-4 border-indigo-600 shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
+            <h1 class="text-4xl font-bold text-white">Gonzalo Aparicio Muñoz</h1>
+            <p class="text-xl text-gray-300 mb-4">Desarrollador de aplicaciones web y multiplataforma</p>
+            <a href="mailto:gaparicio368@gmail.com"
+                class="bg-indigo-600 text-white px-6 py-3 rounded-full shadow-md hover:bg-indigo-800 transition duration-300">Contáctame</a>
+            <div class="mt-4">
+                <a href="https://www.linkedin.com/in/gonzalo-a-b2707823b"
+                    class="text-indigo-400 hover:text-indigo-500">LinkedIn</a> |
+                <a href="https://github.com/0spol" class="text-indigo-400 hover:text-indigo-500">GitHub</a>
+            </div>
         </header>
 
-        <section class="my-8">
-            <h2 class="text-2xl font-bold text-gray-800">Sobre mí</h2>
-            <p class="text-gray-700">
-                Soy un apasionado del desarrollo de aplicaciones web y multiplataforma. Actualmente, estoy finalizando
-                mis estudios de <strong>Técnico Superior en Desarrollo de Aplicaciones Multiplataforma</strong>.
-                Me especializo en lenguajes como <strong>JavaScript</strong>, <strong>Java</strong>,
-                <strong>Kotlin</strong>, y frameworks como <strong>Spring Boot</strong>. Además,
-                tengo experiencia en bases de datos como <strong>MySQL</strong> y <strong>PostgreSQL</strong>.
-                Busco nuevos retos para seguir creciendo profesionalmente.
+        <!-- Sección: Resumen Profesional -->
+        <section class="my-8 fade-in">
+            <h2 class="text-3xl font-semibold text-white mb-6">Sobre mí</h2>
+            <p class="text-gray-300 mb-4">
+                Soy un desarrollador apasionado por la creación de soluciones innovadoras. Tengo experiencia en el
+                desarrollo de aplicaciones web y multiplataforma, utilizando tecnologías como Java, Kotlin, JavaScript y
+                frameworks como React y Spring Boot. Mi enfoque está en mejorar la experiencia del usuario y optimizar
+                los procesos internos a través de soluciones eficientes.
             </p>
         </section>
 
-        <section class="my-8">
-            <h2 class="text-2xl font-bold text-gray-800">Formación</h2>
-            <ul class="list-disc pl-6">
-                <li><strong>Técnico Superior en Desarrollo de Aplicaciones Multiplataforma</strong>(2025)</li>
-                <li><strong>Técnico Superior en Desarrollo de Aplicaciones Web</strong>(2024)
-                </li>
-                <li><strong>Bachillerato</strong>(2022)</li>
-            </ul>
-        </section>
+        <!-- Sección: Formación y Experiencia (2 columnas) -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8 my-8 fade-in">
+            <!-- Formación -->
+            <div>
+                <h2 class="text-3xl font-semibold text-white mb-6">Formación</h2>
+                <div class="space-y-4 text-gray-300">
+                    <div>
+                        <h3 class="text-xl font-semibold">Técnico Superior en Desarrollo de Aplicaciones Multiplataforma
+                            - 2025
+                        </h3>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold">Técnico Superior en Desarrollo de Aplicaciones Web - 2024</h3>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold">Bachillerato - 2022</h3>
 
-        <section class="my-8">
-            <h2 class="text-2xl font-bold text-gray-800">Experiencia</h2>
-            <ul class="list-disc pl-6">
-                <li><strong>Prácticas de grado DAW</strong> - IES Rey Fernando VI 2024</li>
-                <li><strong>Dependiente en tienda</strong> - Temporada verano 2023</li>
-                <li><strong>Camarero en barra</strong> - Temporada verano 2022</li>
-            </ul>
-        </section>
+                    </div>
+                </div>
+            </div>
 
-        <section class="my-8">
-            <h2 class="text-2xl font-bold text-gray-800">Lenguajes y Tecnologías</h2>
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                <span class="bg-blue-100 text-blue-800 py-2 px-4 rounded-lg">Java</span>
-                <span class="bg-blue-100 text-blue-800 py-2 px-4 rounded-lg">JavaScript</span>
-                <span class="bg-blue-100 text-blue-800 py-2 px-4 rounded-lg">Kotlin</span>
-                <span class="bg-blue-100 text-blue-800 py-2 px-4 rounded-lg">React</span>
-                <span class="bg-blue-100 text-blue-800 py-2 px-4 rounded-lg">Spring Boot</span>
-                <span class="bg-blue-100 text-blue-800 py-2 px-4 rounded-lg">Tailwind CSS</span>
-                <span class="bg-blue-100 text-blue-800 py-2 px-4 rounded-lg">MySQL</span>
-                <span class="bg-blue-100 text-blue-800 py-2 px-4 rounded-lg">PostgreSQL</span>
-                <span class="bg-blue-100 text-blue-800 py-2 px-4 rounded-lg">Docker</span>
-                <span class="bg-blue-100 text-blue-800 py-2 px-4 rounded-lg">Git</span>
-                <span class="bg-blue-100 text-blue-800 py-2 px-4 rounded-lg">GitHub</span>
-                <span class="bg-blue-100 text-blue-800 py-2 px-4 rounded-lg">Linux</span>
-                <span class="bg-blue-100 text-blue-800 py-2 px-4 rounded-lg">Windows</span>
+            <!-- Experiencia -->
+            <div>
+                <h2 class="text-3xl font-semibold text-white mb-6">Experiencia</h2>
+                <div class="space-y-4 text-gray-300">
+                    <div>
+                        <h3 class="text-xl font-semibold">Prácticas de grado DAW - 2024</h3>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold">Dependiente en tienda - 2023</h3>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="my-8">
-            <h2 class="text-2xl font-bold text-gray-800">Proyectos</h2>
-            <ul class="space-y-4">
-                <li>
-                    <h3 class="text-xl font-semibold text-gray-800">Aplicación Web CRM</h3>
-                    <p class="text-gray-700">Aplicación web para gestionar clientes, ventas y comunicaciones.</p>
-                    <p class="text-gray-500"><strong>Tecnologías:</strong> React, Tailwind CSS, Spring Boot, MySQL,
-                        Docker</p>
-                    <a href="https://github.com/0spol/Shuemo" class="text-blue-500 underline" target="_blank">Ver en
-                        GitHub</a>
-                </li>
-            </ul>
+        <!-- Sección: Proyectos Destacados -->
+        <section class="my-16 fade-in">
+            <h2 class="text-3xl font-semibold text-white mb-6">Proyectos Destacados</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Proyecto 1: Shuemo -->
+                <div class="bg-gray-800 rounded-lg shadow-lg p-6">
+                    <h3 class="text-xl font-semibold text-white">Shuemo</h3>
+                    <p class="text-gray-400 mt-2">
+                        CRM desarrollado como parte de mi TFG, utilizando <strong>React</strong>, <strong>Tailwind
+                            CSS</strong>, <strong>Docker</strong>, <strong>MySQL</strong>, y <strong>Spring
+                            Boot</strong>.
+                    </p>
+                    <a href="https://github.com/0spol/Shuemo.git"
+                        class="text-indigo-400 hover:text-indigo-500 mt-10 inline-block">Ver código en GitHub</a>
+                </div>
+
+                <!-- Proyecto 2: TUP -->
+                <div class="bg-gray-800 rounded-lg shadow-lg p-6">
+                    <h3 class="text-xl font-semibold text-white">TUP</h3>
+                    <p class="text-gray-400 mt-2">
+                        Aplicación para organizar eventos y torneos, desarrollado como parte de mi TFG, en el que usé
+                        <strong>Jetpack Compose</strong> y
+                        <strong>Firebase</strong>.
+                    </p>
+                    <a href="https://github.com/0spol/TUP.git"
+                        class="text-indigo-400 hover:text-indigo-500 mt-4 inline-block">Ver código en GitHub</a>
+                </div>
+
+            </div>
         </section>
 
-        <section class="my-8">
-            <h2 class="text-2xl font-bold text-gray-800">Contacto</h2>
-            <p class="text-gray-700">
-                Si deseas contactarme, puedes enviarme un correo a <a href="mailto:gaparicio368@gmail.com"
-                    class="text-blue-500 underline">gaparicio368@gmail.com</a> o seguirme en mis redes sociales.
-            </p>
-            <ul class="flex space-x-6 mt-4">
-                <li><a href="https://github.com/0spol" class="text-gray-800 hover:text-blue-500">GitHub</a></li>
-                <li><a href="https://www.linkedin.com/in/gonzalo-a-b2707823b"
-                        class="text-gray-800 hover:text-blue-500">LinkedIn</a></li>
-            </ul>
+        <!-- Sección: Habilidades y Idiomas (2 columnas) -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8 my-8 fade-in">
+            <!-- Habilidades -->
+            <div>
+                <h2 class="text-3xl font-semibold text-white mb-6">Habilidades</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 text-gray-300">
+                    <ul>
+                        <li><strong>Lenguajes:</strong> Java, Kotlin, JavaScript, TypeScript, PHP, HTML, CSS, XML, XSD
+                        </li>
+                        <li><strong>Frameworks:</strong> React, Angular, JQuery, Spring Boot, Hibernate, CodeIgniter,
+                            RedBeans</li>
+                        <li><strong>Sistemas de Gestión de Contenido:</strong> WordPress, Joomla, Odoo</li>
+                        <li><strong>Control de Versiones:</strong> Git, GitHub, GitLab</li>
+                    </ul>
+                    <ul>
+                        <li><strong>Virtualización:</strong> Docker, VirtualBox, Kubernetes</li>
+                        <li><strong>Sistemas y Bases de Datos:</strong> Linux, Windows, MacOS, MySQL, PostgreSQL, Oracle
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Idiomas -->
+            <div>
+                <h2 class="text-3xl font-semibold text-white mb-6">Idiomas</h2>
+                <div class="text-gray-300">
+                    <p><strong>Español:</strong> Nativo</p>
+                    <p><strong>Inglés:</strong> Medio</p>
+                    <p><strong>Japonés:</strong> Iniciando</p>
+                </div>
+            </div>
         </section>
 
-        <footer class="text-center mt-10 text-gray-600">
+        <!-- Footer: Información Legal -->
+        <footer class="text-center py-8 mt-16 bg-gray-800 text-gray-300">
             <p>&copy; 2025 Gonzalo Aparicio Muñoz. Todos los derechos reservados.</p>
         </footer>
+
     </div>
 
 </body>
