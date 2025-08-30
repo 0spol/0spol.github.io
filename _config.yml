@@ -1,6 +1,6 @@
-title: "Portfolio de Gonzalo Aparicio Muñoz"
+title: "Portfolio of Gonzalo Aparicio Muñoz"
 email: "gaparicio368@gmail.com"
-description: "Desarrollador de aplicaciones web y multiplataforma con experiencia en React, Spring Boot y bases de datos."
+description: "Web and Android developer with experience in React, Spring Boot, and databases."
 baseurl: ""
 url: "https://0spol.github.io"
 logo: "/assets/Photo_Profile.jpg"
@@ -16,10 +16,25 @@ social:
     url: "https://www.linkedin.com/in/gonzalo-a-b2707823b"
    
 projects:
-  - title: "Aplicación Web CRM"
-    description: "Aplicación web para gestionar clientes, ventas y comunicaciones en una plataforma escalable."
+  - title: "CRM Web Application"
+    description: "Web application to manage clients, sales, and communications on a scalable platform."
     technologies: "React, Tailwind, Spring Boot, MySQL, Docker"
     link: "https://github.com/0spol/Shuemo"
+
+  - title: "ColorPlayground"
+    description: "Android app to create and test color palettes in real-time using Jetpack Compose."
+    technologies: "Kotlin, Android, Jetpack Compose, Clean Architecture, Gradle"
+    link: "https://github.com/0spol/ColorPlayground"
+
+  - title: "パコニ"
+    description: "Modular Android project using Clean Architecture with Rick and Morty API integration."
+    technologies: "Kotlin, Android, Clean Architecture, Gradle, API Integration"
+    link: "https://github.com/0spol/Pakoni"
+
+  - title: "Docker Learning Lab"
+    description: "Learning resource to practice Docker & Docker Compose with real-world examples."
+    technologies: "Docker, Docker Compose, Java, Databases"
+    link: "https://github.com/0spol/Docker_Learning_Lab"
 
 markdown: kramdown
 highlighter: rouge
