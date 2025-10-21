@@ -1,12 +1,12 @@
-title: "Portfolio of Gonzalo Aparicio Muñoz"
+title: "Portfolio of Gonzalo Aparicio"
 email: "gaparicio368@gmail.com"
-description: "Web and Android developer with experience in React, Spring Boot, and databases."
+description: "Full Stack and Android developer."
 baseurl: ""
 url: "https://0spol.github.io"
-logo: "/assets/Photo_Profile.jpg"
+logo: "/assets/Profile_Picture.jpg"
 theme: "jekyll-theme-minimal"
 github_username: "0spol"
-linkedin_username: "Gonzalo-Aparicio-Muñoz"
+linkedin_username: "Gonzalo-Aparicio"
 linkedin: "https://www.linkedin.com/in/gonzalo-a-b2707823b"
 permalink: "/:title/"
 social:
@@ -35,6 +35,11 @@ projects:
     description: "Learning resource to practice Docker & Docker Compose with real-world examples."
     technologies: "Docker, Docker Compose, Java, Databases"
     link: "https://github.com/0spol/Docker_Learning_Lab"
+
+  - title: "QQR"
+    description: "TUI application for generating QR codes. Built with Python, demonstrating elegant terminal UI design."
+    technologies: "Python, TUI, CLI"
+    link: "https://github.com/0spol/QQR"
 
 markdown: kramdown
 highlighter: rouge

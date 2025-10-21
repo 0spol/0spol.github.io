@@ -1,250 +1,673 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Full Stack & Mobile Developer portfolio. Explore my projects, skills, and experience." />
+    <meta name="theme-color" content="#4f46e5" />
+    <meta property="og:title" content="Gonzalo Aparicio - Full Stack & Android Developer" />
+    <meta property="og:description" content="Passionate developer showcasing Android, Full Stack, and DevOps projects." />
+    <meta property="og:type" content="website" />
     <title>Portfolio of Gonzalo Aparicio</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="icon" href="docs/assets/icon.ico" type="image/x-icon">
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet" />
+    <link rel="icon" href="docs/assets/icon.ico" type="image/x-icon" />
     <style>
+        * {
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e1b4b;
+            --bg-card: #1f2937;
+            --text-primary: #ffffff;
+            --text-secondary: #d1d5db;
+            --text-muted: #9ca3af;
+            --accent-primary: #4f46e5;
+            --accent-secondary: #7c3aed;
+            --border-color: rgba(79, 70, 229, 0.1);
+        }
+
+        .light-theme {
+            --bg-primary: #f8fafc;
+            --bg-secondary: #e0e7ff;
+            --bg-card: #ffffff;
+            --text-primary: #0f172a;
+            --text-secondary: #334155;
+            --text-muted: #64748b;
+            --accent-primary: #4f46e5;
+            --accent-secondary: #7c3aed;
+            --border-color: rgba(79, 70, 229, 0.2);
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            min-height: 100vh;
+            color: var(--text-primary);
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
         .fade-in {
-            animation: fadeIn 2s ease-out;
+            animation: fadeIn 0.8s ease-out;
         }
 
         @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
 
-            100% {
-                opacity: 1;
-            }
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .light-theme nav {
+            background: rgba(248, 250, 252, 0.95);
+        }
+
+        nav a {
+            transition: all 0.3s ease;
+            position: relative;
+            color: var(--text-secondary);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--accent-primary);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--text-primary);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .project-card {
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+            background: var(--bg-card);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(79, 70, 229, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .project-card:hover::before {
+            left: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(79, 70, 229, 0.2);
+            border-color: rgba(79, 70, 229, 0.3);
+        }
+
+        .project-image {
+            position: relative;
+            overflow: hidden;
+            height: 12rem;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+
+        .section-divider {
+            background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+            height: 2px;
+            margin: 3rem 0;
+            opacity: 0.5;
+        }
+
+        .skill-tag {
+            transition: all 0.3s ease;
+            background: var(--accent-primary);
+            color: white;
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+            transition: all 0.3s ease;
+            color: white;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(79, 70, 229, 0.4);
+        }
+
+        .glass-effect {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 2px;
+        }
+
+        .filter-input {
+            position: absolute !important;
+            clip: rect(1px, 1px, 1px, 1px);
+            clip-path: inset(50%);
+            height: 1px;
+            width: 1px;
+            overflow: hidden;
+        }
+
+        .filter-label {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid var(--accent-primary);
+            color: var(--accent-primary);
+            background: transparent;
+        }
+
+        .filter-label:hover {
+            transform: translateY(-2px);
+        }
+
+        #filter-all:checked ~ .projects-wrapper .project-card {
+            display: block;
+        }
+
+        #filter-docker:checked ~ .projects-wrapper .project-card {
+            display: none;
+        }
+
+        #filter-docker:checked ~ .projects-wrapper .docker {
+            display: block;
+        }
+
+        #filter-android:checked ~ .projects-wrapper .project-card {
+            display: none;
+        }
+
+        #filter-android:checked ~ .projects-wrapper .android {
+            display: block;
+        }
+
+        #filter-other:checked ~ .projects-wrapper .project-card {
+            display: none;
+        }
+
+        #filter-other:checked ~ .projects-wrapper .other {
+            display: block;
+        }
+
+        #filter-all:checked ~ .filter-bar label[for="filter-all"],
+        #filter-docker:checked ~ .filter-bar label[for="filter-docker"],
+        #filter-android:checked ~ .filter-bar label[for="filter-android"],
+        #filter-other:checked ~ .filter-bar label[for="filter-other"] {
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+            color: white;
+            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.25);
+        }
+
+        .theme-toggle {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 24px rgba(79, 70, 229, 0.4);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1) rotate(15deg);
+            box-shadow: 0 12px 32px rgba(79, 70, 229, 0.5);
+        }
+
+        .theme-toggle svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+
+        .light-theme .progress-bar {
+            background: #e5e7eb;
+        }
+
+        .progress-bar {
+            background: #374151;
+        }
+
+        .text-muted {
+            color: var(--text-muted);
+        }
+
+        .text-accent {
+            color: var(--accent-primary);
         }
     </style>
 </head>
+<body class="font-sans">
 
-<body class="bg-gray-900 font-sans text-white">
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <svg id="sun-icon" style="display: none;" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <svg id="moon-icon" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="shadow-lg">
+        <div class="container mx-auto px-5 py-4 flex">
+            <div class="md:flex space-x-8">
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="https://www.linkedin.com/in/gonzalo-a-b2707823b">Contact</a>
+            </div>
+        </div>
+    </nav>
 
     <div class="container mx-auto px-6 py-10">
 
         <!-- Personal Information -->
-        <header class="text-center mb-12 fade-in">
-            <img src="/docs/assets/Photo_Profile.jpg" alt="Photo of Gonzalo Aparicio Muñoz"
-                class="w-40 h-40 rounded-full mx-auto mb-4 border-4 border-indigo-600 shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
-            <h1 class="text-4xl font-bold text-white">Gonzalo Aparicio Muñoz</h1>
-            <p class="text-xl text-gray-300 mb-4">Web & Mobile Developer</p>
-            <a href="mailto:gaparicio368@gmail.com"
-                class="bg-indigo-600 text-white px-6 py-3 rounded-full shadow-md hover:bg-indigo-800 transition duration-300">Contact
-                Me</a>
-            <div class="mt-4">
-                <a href="https://www.linkedin.com/in/gonzalo-a-b2707823b"
-                    class="text-indigo-400 hover:text-indigo-500">LinkedIn</a> |
-                <a href="https://github.com/0spol" class="text-indigo-400 hover:text-indigo-500">GitHub</a>
+        <header class="text-center mb-16 fade-in mt-8">
+            <img src="/docs/assets/Profile_Picture.jpg" alt="Profile Picture"
+                class="w-40 h-40 rounded-full mx-auto mb-6 border-4 border-indigo-600 shadow-lg transition duration-300 ease-in-out transform hover:scale-110 object-cover">
+            <h1 class="text-5xl md:text-6xl font-bold mb-2" style="color: var(--text-primary)">Gonzalo Aparicio</h1>
+            <p class="text-2xl mb-2 text-accent">Full Stack & Android Developer</p>
+            <div class="flex gap-4 justify-center flex-wrap">
+                <a href="mailto:gonzaloap03@gmail.com?subject=Let's%20work%20together&body=Hi%20Gonzalo,"
+                    class="cta-button px-8 py-3 rounded-full shadow-md inline-block">
+                    Get In Touch
+                </a>
+            </div>
+            <div class="mt-6 flex gap-6 justify-center">
+                <a href="https://www.linkedin.com/in/gonzalo-a-b2707823b" target="_blank"
+                    class="text-accent hover:opacity-80 transition">LinkedIn</a>
+                <a href="https://github.com/0spol" target="_blank"
+                    class="text-accent hover:opacity-80 transition">GitHub</a>
             </div>
         </header>
 
+        <div class="section-divider" id="about"></div>
+
         <!-- Section: About Me -->
-        <section class="my-8 fade-in">
-            <h2 class="text-3xl font-semibold text-white mb-6">About Me</h2>
-            <p class="text-gray-300 mb-4">
-                I am a passionate developer focused on creating innovative solutions. I have experience in web and
-                multiplataform application development, using technologies such as Java, Kotlin, JavaScript, and
-                frameworks like React and Spring Boot. My focus is on improving user experience and optimizing internal
-                processes through efficient solutions.
-            </p>
-        </section>
-
-        <!-- Section: Education and Experience (2 columns) -->
-        <section class="grid grid-cols-1 md:grid-cols-2 gap-8 my-8 fade-in">
-            <!-- Education -->
-            <div>
-                <h2 class="text-3xl font-semibold text-white mb-6">Education</h2>
-                <div class="space-y-4 text-gray-300">
-                    <div>
-                        <h3 class="text-xl font-semibold">Higher Technician in Multiplataform Application Development -
-                            2025</h3>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-semibold">Higher Technician in Web Application Development - 2024</h3>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-semibold">High School Diploma - 2022</h3>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Experience -->
-            <div>
-                <h2 class="text-3xl font-semibold text-white mb-6">Experience</h2>
-                <div class="space-y-4 text-gray-300">
-                    <div>
-                        <h3 class="text-xl font-semibold">Multiplataform Development Internship (DAM) - 2025</h3>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-semibold">Web Development Internship (DAW) - 2024</h3>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section: Featured Projects -->
         <section class="my-16 fade-in">
-            <h2 class="text-3xl font-semibold text-white mb-6">Featured Projects</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-
-                <!-- Project 1: Shuemo -->
-                <div class="bg-gray-800 rounded-lg shadow-lg p-6">
-                    <h3 class="text-xl font-semibold text-white">Shuemo</h3>
-                    <p class="text-gray-400 mt-2">
-                        CRM developed as part of my final project.
-                    </p>
-                    <!-- Icons / Tech Badges -->
-                    <div class="flex flex-wrap mt-4 gap-2">
-                        <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">React</span>
-                        <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">Vite</span>
-                        <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">Tailwind CSS</span>
-                        <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">Docker</span>
-                        <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">MySQL</span>
-                        <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">Spring Boot</span>
-                        <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">Hibernate</span>
-                    </div>
-                    <a href="https://github.com/0spol/Shuemo.git"
-                        class="text-indigo-400 hover:text-indigo-500 mt-6 inline-block">View code on GitHub</a>
-                </div>
-
-                <!-- Project 2: ColorPlayground -->
-                <div class="bg-gray-800 rounded-lg shadow-lg p-6">
-                    <h3 class="text-xl font-semibold text-white">ColorPlayground</h3>
-                    <p class="text-gray-400 mt-2">
-                        An Android app built with Jetpack Compose for creating and testing color palettes in real-time.
-                        It allows developers and designers to experiment with different color schemes and apply them to
-                        UI components instantly.
-                    </p>
-                    <div class="flex flex-wrap mt-4 gap-2">
-                        <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">Kotlin</span>
-                        <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">Android</span>
-                        <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">Jetpack Compose</span>
-                        <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">Clean Architecture</span>
-                        <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">Gradle</span>
-                    </div>
-                    <a href="https://github.com/0spol/ColorPlayground"
-                        class="text-indigo-400 hover:text-indigo-500 mt-6 inline-block">View code on GitHub</a>
-                </div>
-
-                <!-- Project 3: パコニ -->
-                <div class="bg-gray-800 rounded-lg shadow-lg p-6">
-                    <h3 class="text-xl font-semibold text-white">パコニ</h3>
-                    <p class="text-gray-400 mt-2">
-                        A modular Android project using Clean Architecture with Kotlin and Gradle. Integrates a Rick and
-                        Morty API for data, demonstrating modularization, separation of concerns, and dependency
-                        injection.
-                    </p>
-                    <div class="flex flex-wrap mt-4 gap-2">
-                        <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">Kotlin</span>
-                        <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">Android</span>
-                        <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">Clean Architecture</span>
-                        <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">Gradle</span>
-                        <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">API Integration</span>
-                    </div>
-                    <a href="https://github.com/0spol/Pakoni"
-                        class="text-indigo-400 hover:text-indigo-500 mt-6 inline-block">View code on GitHub</a>
-                </div>
-
-                <!-- Project 4: Docker Learning Lab -->
-                <div class="bg-gray-800 rounded-lg shadow-lg p-6">
-                    <h3 class="text-xl font-semibold text-white">Docker Learning Lab</h3>
-                    <p class="text-gray-400 mt-2">
-                        A learning resource to practice Docker and Docker Compose using real-world examples with
-                        databases, admin tools, and a simple Java application. Guided exercises for both beginners and
-                        advanced users.
-                    </p>
-                    <div class="flex flex-wrap mt-4 gap-2">
-                        <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">Docker</span>
-                        <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">Docker Compose</span>
-                        <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">Java</span>
-                        <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">Databases</span>
-                    </div>
-                    <a href="https://github.com/0spol/Docker_Learning_Lab"
-                        class="text-indigo-400 hover:text-indigo-500 mt-6 inline-block">View code on GitHub</a>
-                </div>
-
+            <h2 class="text-3xl md:text-4xl font-semibold mb-8">
+                <span class="section-title">About Me</span>
+            </h2>
+            <div class="glass-effect rounded-lg p-8 max-w-3xl">
+                <p class="text-muted mb-4 leading-relaxed">
+                    I'm an eager developer with knowledge across various areas of software development, passionate about
+                    growing in the tech industry by working with diverse tools and methodologies.
+                </p>
+                <p class="text-muted leading-relaxed">
+                    Currently focused on enhancing my skills to successfully contribute to projects.
+                </p>
             </div>
         </section>
 
+        <div class="section-divider" id="projects"></div>
 
+        <!-- Section: Projects -->
+        <section class="my-16 fade-in">
+            <h2 class="text-3xl md:text-4xl font-semibold mb-6">
+                <span class="section-title">Projects</span>
+            </h2>
+
+            <div class="relative mb-8">
+                <input type="radio" name="project-filter" id="filter-all" class="filter-input" checked />
+                <input type="radio" name="project-filter" id="filter-docker" class="filter-input" />
+                <input type="radio" name="project-filter" id="filter-android" class="filter-input" />
+                <input type="radio" name="project-filter" id="filter-other" class="filter-input" />
+
+                <div class="filter-bar flex gap-3">
+                    <label for="filter-all" class="filter-label px-4 py-2 rounded-full">All</label>
+                    <label for="filter-android" class="filter-label px-4 py-2 rounded-full">Android</label>
+                    <label for="filter-docker" class="filter-label px-4 py-2 rounded-full">Docker</label>
+                    <label for="filter-other" class="filter-label px-4 py-2 rounded-full">Other</label>
+                </div>
+            </div>
+
+            <div class="projects-wrapper">
+                <!-- Android Projects -->
+                <div class="mb-16">
+                    <h3 class="text-2xl font-semibold text-accent mb-8 flex items-center">
+                        <span class="w-8 h-8 bg-indigo-600 rounded-full flex items-center justify-center mr-3 text-sm">📱</span>
+                        Android
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                        <div class="project-card android rounded-lg shadow-lg overflow-hidden">
+                            <div class="project-image">
+                                <img src="/docs/assets/A_Colorplayground.jpg" alt="ColorPlayground" />
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold">ColorPlayground</h3>
+                                <p class="text-muted mt-2 text-sm">
+                                    An Android app built with Jetpack Compose for creating and testing color palettes in real-time.
+                                </p>
+                                <div class="flex flex-wrap mt-4 gap-2">
+                                    <span class="skill-tag text-xs px-2 py-1 rounded-full">Kotlin</span>
+                                    <span class="skill-tag text-xs px-2 py-1 rounded-full">Android</span>
+                                    <span class="skill-tag text-xs px-2 py-1 rounded-full">Jetpack Compose</span>
+                                </div>
+                                <a href="https://github.com/0spol/ColorPlayground" target="_blank"
+                                    class="text-accent hover:opacity-80 mt-6 inline-block transition">View code on GitHub →</a>
+                            </div>
+                        </div>
+
+                        <div class="project-card android rounded-lg shadow-lg overflow-hidden">
+                            <div class="project-image">
+                                <img src="/docs/assets/A_Pakoni.jpg" alt="Pakoni" />
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold">パコニ</h3>
+                                <p class="text-muted mt-2 text-sm">
+                                    A modular Android project using Clean Architecture with Kotlin. Integrates Rick and Morty API.
+                                </p>
+                                <div class="flex flex-wrap mt-4 gap-2">
+                                    <span class="skill-tag text-xs px-2 py-1 rounded-full">Kotlin</span>
+                                    <span class="skill-tag text-xs px-2 py-1 rounded-full">Clean Architecture</span>
+                                    <span class="skill-tag text-xs px-2 py-1 rounded-full">API Integration</span>
+                                </div>
+                                <a href="https://github.com/0spol/Pakoni" target="_blank"
+                                    class="text-accent hover:opacity-80 mt-6 inline-block transition">View code on GitHub →</a>
+                            </div>
+                        </div>
+
+                        <div class="project-card android rounded-lg shadow-lg overflow-hidden">
+                            <div class="project-image">
+                                <img src="https://github.com/CatimaLoyalty.png" alt="Catima" />
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold">Catima - Contributor</h3>
+                                <p class="text-muted mt-2 text-sm">
+                                    Loyalty Card & Ticket Manager for Android.
+                                </p>
+                                <div class="flex flex-wrap mt-4 gap-2">
+                                    <span class="skill-tag text-xs px-2 py-1 rounded-full">Kotlin</span>
+                                    <span class="skill-tag text-xs px-2 py-1 rounded-full">Java</span>
+                                    <span class="skill-tag text-xs px-2 py-1 rounded-full">Android</span>
+                                </div>
+                                <a href="https://github.com/CatimaLoyalty/Android" target="_blank"
+                                    class="text-accent hover:opacity-80 mt-6 inline-block transition">View code on GitHub →</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Other Projects -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-accent mb-8 flex items-center">
+                        <span class="w-8 h-8 bg-indigo-600 rounded-full flex items-center justify-center mr-3 text-sm">⚙️</span>
+                        Web & Tools
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                        <div class="project-card other rounded-lg shadow-lg overflow-hidden">
+                            <div class="project-image">
+                                <img src="/docs/assets/T_Qqr.jpg" alt="QQR" />
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold">QQR</h3>
+                                <p class="text-muted mt-2 text-sm">
+                                    TUI application for generating QR codes. Built with Python, demonstrating elegant terminal UI design.
+                                </p>
+                                <div class="flex flex-wrap mt-4 gap-2">
+                                    <span class="skill-tag text-xs px-2 py-1 rounded-full">Python</span>
+                                    <span class="skill-tag text-xs px-2 py-1 rounded-full">TUI</span>
+                                    <span class="skill-tag text-xs px-2 py-1 rounded-full">CLI</span>
+                                </div>
+                                <a href="https://github.com/0spol/QQR" target="_blank"
+                                    class="text-accent hover:opacity-80 mt-6 inline-block transition">View code on GitHub →</a>
+                            </div>
+                        </div>
+                        
+                        <div class="project-card docker rounded-lg shadow-lg overflow-hidden">
+                            <div class="project-image">
+                                <img src="https://github.com/docker.png" alt="Docker Learning Lab" />
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold">Docker Learning Lab</h3>
+                                <p class="text-muted mt-2 text-sm">
+                                    Comprehensive learning resource for Docker with examples.
+                                </p>
+                                <div class="flex flex-wrap mt-4 gap-2">
+                                    <span class="skill-tag text-xs px-2 py-1 rounded-full">Docker</span>
+                                    <span class="skill-tag text-xs px-2 py-1 rounded-full">DevOps</span>
+                                </div>
+                                <a href="https://github.com/0spol/Docker_Learning_Lab" target="_blank"
+                                    class="text-accent hover:opacity-80 mt-6 inline-block transition">View code on GitHub →</a>
+                            </div>
+                        </div>
+
+                        <div class="project-card other rounded-lg shadow-lg overflow-hidden">
+                            <div class="project-image">
+                                <img src="/docs/assets/T_Shuemo.jpg" alt="Shuemo CRM" />
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold">Shuemo</h3>
+                                <p class="text-muted mt-2 text-sm">
+                                    Full-stack CRM developed as final project. Solution for managing customer relationships.
+                                </p>
+                                <div class="flex flex-wrap mt-4 gap-2">
+                                    <span class="skill-tag text-xs px-2 py-1 rounded-full">React</span>
+                                    <span class="skill-tag text-xs px-2 py-1 rounded-full">Spring Boot</span>
+                                    <span class="skill-tag text-xs px-2 py-1 rounded-full">Docker</span>
+                                </div>
+                                <a href="https://github.com/0spol/Shuemo.git" target="_blank"
+                                    class="text-accent hover:opacity-80 mt-6 inline-block transition">View code on GitHub →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Section: Education and Experience -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8 my-16 fade-in">
+            <div>
+                <h2 class="text-3xl font-semibold mb-8">
+                    <span class="section-title">Education</span>
+                </h2>
+                <div class="space-y-6">
+                    <div class="glass-effect rounded-lg p-6 border-l-4 border-indigo-600">
+                        <h3 class="text-xl font-semibold text-accent">Higher Technician in Multiplataform Application Development</h3>
+                        <p class="text-muted text-sm mt-1">2025</p>
+                    </div>
+                    <div class="glass-effect rounded-lg p-6 border-l-4 border-indigo-600">
+                        <h3 class="text-xl font-semibold text-accent">Higher Technician in Web Application Development</h3>
+                        <p class="text-muted text-sm mt-1">2024</p>
+                    </div>
+                    <div class="glass-effect rounded-lg p-6 border-l-4 border-indigo-600">
+                        <h3 class="text-xl font-semibold text-accent">High School</h3>
+                        <p class="text-muted text-sm mt-1">2022</p>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h2 class="text-3xl font-semibold mb-8">
+                    <span class="section-title">Experience</span>
+                </h2>
+                <div class="space-y-6">
+                    <div class="glass-effect rounded-lg p-6 border-l-4 border-indigo-600">
+                        <h3 class="text-xl font-semibold text-accent">Multiplataform Development Internship</h3>
+                        <p class="text-muted text-sm mt-1">DAM • 2025</p>
+                    </div>
+                    <div class="glass-effect rounded-lg p-6 border-l-4 border-indigo-600">
+                        <h3 class="text-xl font-semibold text-accent">Web Development Internship</h3>
+                        <p class="text-muted text-sm mt-1">DAW • 2024</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider" id="skills"></div>
 
         <!-- Section: Skills and Languages -->
-        <section class="grid grid-cols-1 md:grid-cols-2 gap-8 my-8 fade-in">
-            <!-- Skills -->
-            <div>
-                <h2 class="text-3xl font-semibold text-white mb-6">Skills</h2>
-                <div class="flex flex-wrap gap-2 text-gray-300">
-                    <!-- Languages -->
-                    <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">Java</span>
-                    <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">JavaFX</span>
-                    <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">Kotlin</span>
-                    <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">Python</span>
-                    <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">JavaScript</span>
-                    <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">TypeScript</span>
-                    <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">PHP</span>
-                    <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">SQL</span>
+        <section class="grid grid-cols-1 lg:grid-cols-3 gap-8 my-16 fade-in">
+            <div class="lg:col-span-2">
+                <h2 class="text-3xl font-semibold mb-8">
+                    <span class="section-title">Skills</span>
+                </h2>
 
-                    <!-- Frameworks & Libraries -->
-                    <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">React</span>
-                    <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">Angular</span>
-                    <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">JQuery</span>
-                    <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">Spring Boot</span>
-                    <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">Hibernate</span>
-                    <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">CodeIgniter</span>
-                    <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">RedBeans</span>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-lg font-semibold text-accent mb-4">Languages</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag text-xs px-3 py-2 rounded-full">Java</span>
+                            <span class="skill-tag text-xs px-3 py-2 rounded-full">Kotlin</span>
+                            <span class="skill-tag text-xs px-3 py-2 rounded-full">Python</span>
+                            <span class="skill-tag text-xs px-3 py-2 rounded-full">JavaScript</span>
+                            <span class="skill-tag text-xs px-3 py-2 rounded-full">TypeScript</span>
+                            <span class="skill-tag text-xs px-3 py-2 rounded-full">PHP</span>
+                            <span class="skill-tag text-xs px-3 py-2 rounded-full">SQL</span>
+                        </div>
+                    </div>
 
-                    <!-- CMS & Automation -->
-                    <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">WordPress</span>
-                    <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">Joomla</span>
-                    <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">Odoo</span>
-                    <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">PowerAutomate</span>
-                    <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">ExcelScripts</span>
+                    <div>
+                        <h3 class="text-lg font-semibold text-accent mb-4">Frontend & Mobile</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag text-xs px-3 py-2 rounded-full">React</span>
+                            <span class="skill-tag text-xs px-3 py-2 rounded-full">Angular</span>
+                            <span class="skill-tag text-xs px-3 py-2 rounded-full">Jetpack Compose</span>
+                            <span class="skill-tag text-xs px-3 py-2 rounded-full">Tailwind CSS</span>
+                            <span class="skill-tag text-xs px-3 py-2 rounded-full">Android</span>
+                        </div>
+                    </div>
 
-                    <!-- Version Control & CI/CD -->
-                    <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">Git</span>
-                    <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">GitHub</span>
-                    <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">GitHub Actions</span>
-                    <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">GitLab</span>
-                    <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">Jenkins</span>
+                    <div>
+                        <h3 class="text-lg font-semibold text-accent mb-4">Backend & DevOps</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag text-xs px-3 py-2 rounded-full">Spring Boot</span>
+                            <span class="skill-tag text-xs px-3 py-2 rounded-full">Docker</span>
+                            <span class="skill-tag text-xs px-3 py-2 rounded-full">Kubernetes</span>
+                            <span class="skill-tag text-xs px-3 py-2 rounded-full">GitHub Actions</span>
+                            <span class="skill-tag text-xs px-3 py-2 rounded-full">Jenkins</span>
+                        </div>
+                    </div>
 
-                    <!-- Virtualization & Containers -->
-                    <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">Docker</span>
-                    <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">Kubernetes</span>
-                    <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">VirtualBox</span>
-
-                    <!-- Databases -->
-                    <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">MySQL</span>
-                    <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">PostgreSQL</span>
-                    <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">Oracle</span>
-                    <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">MongoDB</span>
-
-                    <!-- Operating Systems -->
-                    <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">Linux</span>
-                    <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">Windows</span>
-                    <span class="bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">MacOS</span>
+                    <div>
+                        <h3 class="text-lg font-semibold text-accent mb-4">Databases & Tools</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag text-xs px-3 py-2 rounded-full">MySQL</span>
+                            <span class="skill-tag text-xs px-3 py-2 rounded-full">PostgreSQL</span>
+                            <span class="skill-tag text-xs px-3 py-2 rounded-full">MongoDB</span>
+                            <span class="skill-tag text-xs px-3 py-2 rounded-full">Git</span>
+                            <span class="skill-tag text-xs px-3 py-2 rounded-full">Linux</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Languages -->
             <div>
-                <h2 class="text-3xl font-semibold text-white mb-6">Languages</h2>
-                <div class="text-gray-300">
-                    <p><strong>Spanish:</strong> Native</p>
-                    <p><strong>English:</strong> Intermediate</p>
-                    <p><strong>Japanese:</strong> Beginner</p>
+                <h2 class="text-3xl font-semibold mb-8">
+                    <span class="section-title">Languages</span>
+                </h2>
+                <div class="space-y-4">
+                    <div class="glass-effect rounded-lg p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-semibold text-white">Spanish</span>
+                            <span class="text-indigo-400 text-sm">Native</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-indigo-500 to-indigo-600 h-2 rounded-full"
+                                style="width: 100%"></div>
+                        </div>
+                    </div>
+                    <div class="glass-effect rounded-lg p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-semibold text-white">English</span>
+                            <span class="text-indigo-400 text-sm">Intermediate</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-indigo-500 to-indigo-600 h-2 rounded-full"
+                                style="width: 65%"></div>
+                        </div>
+                    </div>
+                    <div class="glass-effect rounded-lg p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-semibold text-white">Japanese</span>
+                            <span class="text-indigo-400 text-sm">Beginner</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-indigo-500 to-indigo-600 h-2 rounded-full"
+                                style="width: 30%"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
+        <div class="section-divider"></div>
+
         <footer class="text-center py-8 mt-16 bg-gray-800 text-gray-300">
-            <p>&copy; 2025 Gonzalo Aparicio Muñoz. All rights reserved.</p>
+            <p>&copy; {{ "now" | date: "%Y" }} Gonzalo Aparicio. All rights reserved.</p>
         </footer>
 
     </div>
