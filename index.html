@@ -28,32 +28,10 @@
             --border-color: rgba(79, 70, 229, 0.1);
         }
 
-        .light-theme {
-            --bg-primary: #f8fafc;
-            --bg-secondary: #e0e7ff;
-            --bg-card: #ffffff;
-            --text-primary: #0f172a;
-            --text-secondary: #334155;
-            --text-muted: #64748b;
-            --accent-primary: #4f46e5;
-            --accent-secondary: #7c3aed;
-            --border-color: rgba(79, 70, 229, 0.2);
-        }
-
         body {
             background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
             min-height: 100vh;
             color: var(--text-primary);
-            transition: background 0.3s ease, color 0.3s ease;
-        }
-
-        .fade-in {
-            animation: fadeIn 0.8s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
         }
 
         nav {
@@ -61,11 +39,6 @@
             top: 0;
             z-index: 50;
             background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
-        }
-
-        .light-theme nav {
-            background: rgba(248, 250, 252, 0.95);
         }
 
         nav a {
@@ -98,7 +71,6 @@
             border: 1px solid var(--border-color);
             background: var(--bg-card);
             position: relative;
-            overflow: hidden;
         }
 
         .project-card::before {
@@ -190,101 +162,6 @@
             border-radius: 2px;
         }
 
-        .filter-input {
-            position: absolute !important;
-            clip: rect(1px, 1px, 1px, 1px);
-            clip-path: inset(50%);
-            height: 1px;
-            width: 1px;
-            overflow: hidden;
-        }
-
-        .filter-label {
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 1px solid var(--accent-primary);
-            color: var(--accent-primary);
-            background: transparent;
-        }
-
-        .filter-label:hover {
-            transform: translateY(-2px);
-        }
-
-        #filter-all:checked ~ .projects-wrapper .project-card {
-            display: block;
-        }
-
-        #filter-docker:checked ~ .projects-wrapper .project-card {
-            display: none;
-        }
-
-        #filter-docker:checked ~ .projects-wrapper .docker {
-            display: block;
-        }
-
-        #filter-android:checked ~ .projects-wrapper .project-card {
-            display: none;
-        }
-
-        #filter-android:checked ~ .projects-wrapper .android {
-            display: block;
-        }
-
-        #filter-other:checked ~ .projects-wrapper .project-card {
-            display: none;
-        }
-
-        #filter-other:checked ~ .projects-wrapper .other {
-            display: block;
-        }
-
-        #filter-all:checked ~ .filter-bar label[for="filter-all"],
-        #filter-docker:checked ~ .filter-bar label[for="filter-docker"],
-        #filter-android:checked ~ .filter-bar label[for="filter-android"],
-        #filter-other:checked ~ .filter-bar label[for="filter-other"] {
-            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
-            color: white;
-            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.25);
-        }
-
-        .theme-toggle {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 8px 24px rgba(79, 70, 229, 0.4);
-            transition: all 0.3s ease;
-            z-index: 100;
-        }
-
-        .theme-toggle:hover {
-            transform: scale(1.1) rotate(15deg);
-            box-shadow: 0 12px 32px rgba(79, 70, 229, 0.5);
-        }
-
-        .theme-toggle svg {
-            width: 24px;
-            height: 24px;
-            fill: white;
-        }
-
-        .light-theme .progress-bar {
-            background: #e5e7eb;
-        }
-
-        .progress-bar {
-            background: #374151;
-        }
-
         .text-muted {
             color: var(--text-muted);
         }
@@ -373,20 +250,6 @@
             <h2 class="text-3xl md:text-4xl font-semibold mb-6">
                 <span class="section-title">Projects</span>
             </h2>
-
-            <div class="relative mb-8">
-                <input type="radio" name="project-filter" id="filter-all" class="filter-input" checked />
-                <input type="radio" name="project-filter" id="filter-docker" class="filter-input" />
-                <input type="radio" name="project-filter" id="filter-android" class="filter-input" />
-                <input type="radio" name="project-filter" id="filter-other" class="filter-input" />
-
-                <div class="filter-bar flex gap-3">
-                    <label for="filter-all" class="filter-label px-4 py-2 rounded-full">All</label>
-                    <label for="filter-android" class="filter-label px-4 py-2 rounded-full">Android</label>
-                    <label for="filter-docker" class="filter-label px-4 py-2 rounded-full">Docker</label>
-                    <label for="filter-other" class="filter-label px-4 py-2 rounded-full">Other</label>
-                </div>
-            </div>
 
             <div class="projects-wrapper">
                 <!-- Android Projects -->
@@ -667,7 +530,7 @@
         <div class="section-divider"></div>
 
         <footer class="text-center py-8 mt-16 bg-gray-800 text-gray-300">
-            <p>&copy; {{ "now" | date: "%Y" }} Gonzalo Aparicio. All rights reserved.</p>
+            <p>&copy; 2025 Gonzalo Aparicio</p>
         </footer>
 
     </div>
